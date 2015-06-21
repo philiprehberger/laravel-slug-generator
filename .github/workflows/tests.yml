@@ -51,7 +51,7 @@ jobs:
             "illuminate/http:${{ matrix.laravel }}" \
             "orchestra/testbench:${{ matrix.testbench }}" \
             --no-interaction --no-update
-          composer update --prefer-dist --no-interaction --no-progress
+          composer update -W --prefer-dist --no-interaction --no-progress
 
       - name: Run tests
         run: vendor/bin/phpunit --colors=always
