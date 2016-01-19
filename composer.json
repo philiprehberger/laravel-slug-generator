@@ -1,7 +1,13 @@
 {
     "name": "philiprehberger/laravel-slug-generator",
     "description": "Automatic slug generation for Eloquent models with scoped uniqueness, history, and transliteration.",
-    "keywords": ["laravel", "slug", "eloquent", "seo", "url"],
+    "keywords": [
+        "laravel",
+        "slug",
+        "eloquent",
+        "seo",
+        "url"
+    ],
     "homepage": "https://github.com/philiprehberger/laravel-slug-generator",
     "license": "MIT",
     "authors": [
@@ -22,8 +28,9 @@
         "orchestra/testbench": "^9.0|^10.0",
         "phpunit/phpunit": "^11.0",
         "laravel/pint": "^1.0",
+        "phpstan/extension-installer": "^1.3",
         "phpstan/phpstan": "^1.12|^2.0",
-        "nunomaduro/larastan": "^2.0"
+        "nunomaduro/larastan": "^2.0|^3.0"
     },
     "autoload": {
         "psr-4": {
@@ -43,7 +50,10 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
