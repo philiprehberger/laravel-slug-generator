@@ -65,12 +65,11 @@ trait HasSlugHistory
      *    when the slug exists in history and the owning model is still present.
      *  - null when the slug is unknown.
      *
-     * @param  string  $slug
      * @return static|array{redirect: true, model: static, slug: string}|null
      */
     public static function findBySlugOrRedirect(string $slug): static|array|null
     {
-        $slugField = (new static())->slugField(); // @phpstan-ignore-line
+        $slugField = (new static)->slugField(); // @phpstan-ignore-line
 
         /** @var static|null $model */
         $model = static::where($slugField, $slug)->first();
@@ -99,8 +98,8 @@ trait HasSlugHistory
 
         return [
             'redirect' => true,
-            'model'    => $owner,
-            'slug'     => (string) $owner->getAttribute($slugField),
+            'model' => $owner,
+            'slug' => (string) $owner->getAttribute($slugField),
         ];
     }
 
@@ -120,8 +119,6 @@ trait HasSlugHistory
 
     /**
      * Whether slug history recording is active for this model.
-     *
-     * @return bool
      */
     public function isSlugHistoryEnabled(): bool
     {
@@ -134,23 +131,19 @@ trait HasSlugHistory
 
     /**
      * Persist an old slug value to the history table.
-     *
-     * @param  string  $oldSlug
      */
     protected function recordSlugHistory(string $oldSlug): void
     {
         SlugHistory::create([
             'sluggable_type' => static::class,
-            'sluggable_id'   => $this->getKey(),
-            'slug'           => $oldSlug,
+            'sluggable_id' => $this->getKey(),
+            'slug' => $oldSlug,
         ]);
     }
 
     /**
      * Proxy for the slugField() method defined in HasSlug.
      * Declared here so static analysis does not complain about an unknown method.
-     *
-     * @return string
      */
     public function slugField(): string
     {

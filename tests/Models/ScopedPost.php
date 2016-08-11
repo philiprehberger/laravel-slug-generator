@@ -10,10 +10,10 @@ use PhilipRehberger\SlugGenerator\Concerns\HasSlug;
 /**
  * Test model that scopes uniqueness by `category_id`.
  *
- * @property int         $id
- * @property string      $title
- * @property string      $slug
- * @property int|null    $category_id
+ * @property int $id
+ * @property string $title
+ * @property string $slug
+ * @property int|null $category_id
  */
 class ScopedPost extends Model
 {

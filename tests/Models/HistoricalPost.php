@@ -11,7 +11,7 @@ use PhilipRehberger\SlugGenerator\Concerns\HasSlugHistory;
 /**
  * Test model that records old slugs in the history table.
  *
- * @property int    $id
+ * @property int $id
  * @property string $title
  * @property string $slug
  */

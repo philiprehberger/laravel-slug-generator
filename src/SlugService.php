@@ -48,9 +48,6 @@ class SlugService
      * Resolve the source string from one or more model attributes.
      *
      * When multiple fields are given they are concatenated with a space.
-     *
-     * @param  Model  $model
-     * @return string
      */
     protected function resolveSource(Model $model): string
     {
@@ -61,7 +58,7 @@ class SlugService
         if (is_array($fields)) {
             $parts = array_map(
                 fn (string $field) => (string) ($model->getAttribute($field) ?? ''),
-                $fields
+                $fields,
             );
 
             return implode(' ', array_filter($parts, fn (string $p) => $p !== ''));
@@ -75,10 +72,6 @@ class SlugService
      *
      * When transliteration is enabled non-ASCII characters are converted to
      * their closest ASCII equivalents before the standard slugification step.
-     *
-     * @param  string  $source
-     * @param  string  $separator
-     * @return string
      */
     public function createSlug(string $source, string $separator = '-'): string
     {
@@ -96,9 +89,6 @@ class SlugService
      *
      * Uses the PHP intl extension (transliterator) when available and falls
      * back to iconv() followed by a simple strip of remaining non-ASCII bytes.
-     *
-     * @param  string  $value
-     * @return string
      */
     protected function transliterate(string $value): string
     {
@@ -122,11 +112,6 @@ class SlugService
 
     /**
      * Truncate a slug to the given maximum length, keeping whole words.
-     *
-     * @param  string  $slug
-     * @param  int  $maxLength
-     * @param  string  $separator
-     * @return string
      */
     protected function truncateAtWordBoundary(string $slug, int $maxLength, string $separator): string
     {
@@ -151,10 +136,6 @@ class SlugService
      *
      * Queries for existing records that share the same slug prefix, then
      * appends the lowest available numeric suffix: -2, -3, …
-     *
-     * @param  string  $slug
-     * @param  Model  $model
-     * @return string
      */
     public function makeUnique(string $slug, Model $model): string
     {
@@ -173,7 +154,7 @@ class SlugService
         $query = $model->newQueryWithoutScopes()
             ->where(function ($q) use ($slugField, $slug, $separator): void {
                 $q->where($slugField, $slug)
-                    ->orWhere($slugField, 'like', $slug . $separator . '%');
+                    ->orWhere($slugField, 'like', $slug.$separator.'%');
             });
 
         // Exclude the current record when updating.
@@ -195,7 +176,7 @@ class SlugService
 
         $suffix = 2;
         do {
-            $candidate = $slug . $separator . $suffix;
+            $candidate = $slug.$separator.$suffix;
             $suffix++;
         } while (in_array($candidate, $existingSlugs, true));
 

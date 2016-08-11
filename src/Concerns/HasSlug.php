@@ -48,8 +48,6 @@ trait HasSlug
      *     that value differs from what auto-generation would produce for the
      *     current dirty state (i.e. the caller provided an explicit slug).
      *   - It is an update and `slugOnUpdate()` returns false.
-     *
-     * @param  bool  $isUpdate
      */
     protected function generateSlugIfNeeded(bool $isUpdate): void
     {
@@ -85,9 +83,6 @@ trait HasSlug
      * was set before the event fired — specifically, if the slug is non-null
      * and non-empty and the source field(s) have not changed (i.e. only the
      * slug was touched), we treat it as a manual override.
-     *
-     * @param  string  $slugField
-     * @return bool
      */
     protected function isManuallySetSlug(string $slugField): bool
     {
@@ -141,8 +136,6 @@ trait HasSlug
 
     /**
      * The database column that stores the slug.
-     *
-     * @return string
      */
     public function slugField(): string
     {
@@ -151,8 +144,6 @@ trait HasSlug
 
     /**
      * The separator inserted between words in the generated slug.
-     *
-     * @return string
      */
     public function slugSeparator(): string
     {
@@ -164,8 +155,6 @@ trait HasSlug
      *
      * When set, truncation respects word boundaries — the slug will never be
      * cut in the middle of a word. Return null for unlimited length.
-     *
-     * @return int|null
      */
     public function slugMaxLength(): ?int
     {
@@ -178,8 +167,6 @@ trait HasSlug
      * Whether the slug must be unique within the model's table.
      *
      * When true, duplicate slugs receive a numeric suffix: -2, -3, etc.
-     *
-     * @return bool
      */
     public function slugShouldBeUnique(): bool
     {
@@ -193,8 +180,6 @@ trait HasSlug
      * different values in this column (e.g. tenant_id, category_id).
      *
      * Return null to disable scoped uniqueness.
-     *
-     * @return string|null
      */
     public function slugUniqueScope(): ?string
     {
@@ -206,8 +191,6 @@ trait HasSlug
      *
      * When false (default), the slug is generated once at creation and is
      * never automatically overwritten.
-     *
-     * @return bool
      */
     public function slugOnUpdate(): bool
     {

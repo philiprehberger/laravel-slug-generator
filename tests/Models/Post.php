@@ -10,7 +10,7 @@ use PhilipRehberger\SlugGenerator\Concerns\HasSlug;
 /**
  * Standard test model — generates a slug from the `title` field.
  *
- * @property int    $id
+ * @property int $id
  * @property string $title
  * @property string $slug
  */

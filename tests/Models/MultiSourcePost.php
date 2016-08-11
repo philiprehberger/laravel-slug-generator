@@ -10,10 +10,10 @@ use PhilipRehberger\SlugGenerator\Concerns\HasSlug;
 /**
  * Test model that builds a slug from two source fields.
  *
- * @property int         $id
+ * @property int $id
  * @property string|null $first_name
  * @property string|null $last_name
- * @property string      $slug
+ * @property string $slug
  */
 class MultiSourcePost extends Model
 {

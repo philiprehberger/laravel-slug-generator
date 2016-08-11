@@ -35,12 +35,10 @@ class SlugRedirectMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  Request  $request
-     * @param  Closure(Request): SymfonyResponse  $next
-     * @param  string  $modelClass     Fully-qualified model class name.
-     * @param  string  $routeParam     Route parameter holding the slug value.
-     * @param  string  $urlPrefix      URL prefix for the redirect target.
-     * @return SymfonyResponse
+     * @param Closure(Request): SymfonyResponse $next
+     * @param string $modelClass Fully-qualified model class name.
+     * @param string $routeParam Route parameter holding the slug value.
+     * @param string $urlPrefix URL prefix for the redirect target.
      */
     public function handle(
         Request $request,
@@ -74,7 +72,7 @@ class SlugRedirectMiddleware
         ) {
             $prefix = rtrim($urlPrefix, '/');
             $newSlug = ltrim((string) $result['slug'], '/');
-            $redirectUrl = $prefix . '/' . $newSlug;
+            $redirectUrl = $prefix.'/'.$newSlug;
 
             return redirect($redirectUrl, Response::HTTP_MOVED_PERMANENTLY);
         }
