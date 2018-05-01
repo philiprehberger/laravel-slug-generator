@@ -6,11 +6,13 @@ namespace PhilipRehberger\SlugGenerator;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Carbon;
+use PhilipRehberger\SlugGenerator\Concerns\HasSlugHistory;
 
 /**
  * SlugHistory
  *
- * Stores historical slugs for any model that uses the {@see \PhilipRehberger\SlugGenerator\Concerns\HasSlugHistory}
+ * Stores historical slugs for any model that uses the {@see HasSlugHistory}
  * trait. Each row records the old slug value, the owning model type and id,
  * and the timestamp at which it was superseded.
  *
@@ -18,7 +20,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property string $sluggable_type
  * @property int|string $sluggable_id
  * @property string $slug
- * @property \Illuminate\Support\Carbon $created_at
+ * @property Carbon $created_at
  */
 class SlugHistory extends Model
 {
