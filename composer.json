@@ -1,6 +1,6 @@
 {
     "name": "philiprehberger/laravel-slug-generator",
-    "description": "Automatic slug generation for Eloquent models with scoped uniqueness, history, and transliteration.",
+    "description": "Automatic slug generation for Eloquent models with scoped uniqueness, history, and transliteration",
     "type": "library",
     "keywords": [
         "laravel",
