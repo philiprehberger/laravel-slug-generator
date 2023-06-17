@@ -3,6 +3,7 @@
 [![Tests](https://github.com/philiprehberger/laravel-slug-generator/actions/workflows/tests.yml/badge.svg)](https://github.com/philiprehberger/laravel-slug-generator/actions/workflows/tests.yml)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/philiprehberger/laravel-slug-generator.svg)](https://packagist.org/packages/philiprehberger/laravel-slug-generator)
 [![License](https://img.shields.io/github/license/philiprehberger/laravel-slug-generator)](LICENSE)
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
 
 Automatic slug generation for Eloquent models with scoped uniqueness, history, and transliteration.
 
