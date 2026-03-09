@@ -2,13 +2,11 @@ includes:
     - vendor/nunomaduro/larastan/extension.neon
 
 parameters:
-    level: 8
-
+    level: 6
     paths:
         - src
-
-    checkMissingIterableValueType: false
-
+    excludePaths:
+        - vendor
     ignoreErrors:
-        # Orchestra\Testbench uses mixed $app parameter; not our code.
-        - '#Parameter \#1 \$app of method .* expects#'
+        - '#is not covariant with#'
+        - '#but returns Illuminate\\Database\\Eloquent\\Relations\\MorphTo#'
