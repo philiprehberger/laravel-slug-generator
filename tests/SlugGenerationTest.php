@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace PhilipRehberger\SlugGenerator\Tests;
 
-use PHPUnit\Framework\Attributes\Test;
 use PhilipRehberger\SlugGenerator\Tests\Models\MaxLengthPost;
 use PhilipRehberger\SlugGenerator\Tests\Models\MultiSourcePost;
 use PhilipRehberger\SlugGenerator\Tests\Models\Post;
 use PhilipRehberger\SlugGenerator\Tests\Models\ScopedPost;
 use PhilipRehberger\SlugGenerator\Tests\Models\UpdateablePost;
+use PHPUnit\Framework\Attributes\Test;
 
 class SlugGenerationTest extends TestCase
 {
@@ -161,7 +161,7 @@ class SlugGenerationTest extends TestCase
     #[Test]
     public function it_skips_auto_generation_when_slug_is_manually_set(): void
     {
-        $post = new Post();
+        $post = new Post;
         $post->title = 'Hello World';
         $post->slug = 'my-custom-slug';
         $post->save();

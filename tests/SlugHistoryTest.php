@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PhilipRehberger\SlugGenerator\Tests;
 
-use PHPUnit\Framework\Attributes\Test;
 use PhilipRehberger\SlugGenerator\SlugHistory;
 use PhilipRehberger\SlugGenerator\Tests\Models\HistoricalPost;
+use PHPUnit\Framework\Attributes\Test;
 
 class SlugHistoryTest extends TestCase
 {
@@ -33,8 +33,8 @@ class SlugHistoryTest extends TestCase
 
         $this->assertDatabaseHas('slug_history', [
             'sluggable_type' => HistoricalPost::class,
-            'sluggable_id'   => $post->id,
-            'slug'           => $originalSlug,
+            'sluggable_id' => $post->id,
+            'slug' => $originalSlug,
         ]);
     }
 

@@ -21,7 +21,7 @@ abstract class TestCase extends Orchestra
     /**
      * Register the package service provider.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param \Illuminate\Foundation\Application $app
      * @return array<class-string>
      */
     protected function getPackageProviders($app): array
@@ -34,15 +34,15 @@ abstract class TestCase extends Orchestra
     /**
      * Configure the application for tests.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param \Illuminate\Foundation\Application $app
      */
     protected function defineEnvironment($app): void
     {
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connections.testing', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
     }
 

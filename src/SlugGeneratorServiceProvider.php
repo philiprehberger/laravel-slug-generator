@@ -29,11 +29,11 @@ class SlugGeneratorServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/slug-generator.php',
-            'slug-generator'
+            __DIR__.'/../config/slug-generator.php',
+            'slug-generator',
         );
 
-        $this->app->singleton(SlugService::class, fn () => new SlugService());
+        $this->app->singleton(SlugService::class, fn () => new SlugService);
     }
 
     /**
@@ -42,7 +42,7 @@ class SlugGeneratorServiceProvider extends ServiceProvider
     protected function publishConfig(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/slug-generator.php' => config_path('slug-generator.php'),
+            __DIR__.'/../config/slug-generator.php' => config_path('slug-generator.php'),
         ], 'slug-generator-config');
     }
 
@@ -52,8 +52,7 @@ class SlugGeneratorServiceProvider extends ServiceProvider
     protected function publishMigrations(): void
     {
         $this->publishes([
-            __DIR__ . '/../database/migrations/create_slug_history_table.php'
-                => database_path('migrations/' . date('Y_m_d_His') . '_create_slug_history_table.php'),
+            __DIR__.'/../database/migrations/create_slug_history_table.php' => database_path('migrations/'.date('Y_m_d_His').'_create_slug_history_table.php'),
         ], 'slug-generator-migrations');
     }
 

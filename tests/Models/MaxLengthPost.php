@@ -10,7 +10,7 @@ use PhilipRehberger\SlugGenerator\Concerns\HasSlug;
 /**
  * Test model with a fixed max slug length.
  *
- * @property int    $id
+ * @property int $id
  * @property string $title
  * @property string $slug
  */

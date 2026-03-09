@@ -1,10 +1,11 @@
-
 parameters:
     level: 6
     paths:
         - src
     excludePaths:
         - vendor
+    reportUnmatchedIgnoredErrors: false
     ignoreErrors:
         - '#is not covariant with#'
         - '#but returns Illuminate\\Database\\Eloquent\\Relations\\MorphTo#'
+        - identifier: trait.unused

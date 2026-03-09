@@ -14,10 +14,10 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * trait. Each row records the old slug value, the owning model type and id,
  * and the timestamp at which it was superseded.
  *
- * @property int         $id
- * @property string      $sluggable_type
- * @property int|string  $sluggable_id
- * @property string      $slug
+ * @property int $id
+ * @property string $sluggable_type
+ * @property int|string $sluggable_id
+ * @property string $slug
  * @property \Illuminate\Support\Carbon $created_at
  */
 class SlugHistory extends Model
@@ -69,8 +69,7 @@ class SlugHistory extends Model
     /**
      * Override save() to always stamp created_at when inserting.
      *
-     * @param  array<string, mixed>  $options
-     * @return bool
+     * @param array<string, mixed> $options
      */
     public function save(array $options = []): bool
     {

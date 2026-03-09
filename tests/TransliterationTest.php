@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PhilipRehberger\SlugGenerator\Tests;
 
-use PHPUnit\Framework\Attributes\Test;
 use PhilipRehberger\SlugGenerator\SlugService;
 use PhilipRehberger\SlugGenerator\Tests\Models\Post;
+use PHPUnit\Framework\Attributes\Test;
 
 class TransliterationTest extends TestCase
 {
@@ -15,7 +15,7 @@ class TransliterationTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->service = new SlugService();
+        $this->service = new SlugService;
     }
 
     // -------------------------------------------------------------------------

@@ -10,7 +10,7 @@ use PhilipRehberger\SlugGenerator\Concerns\HasSlug;
 /**
  * Test model that regenerates its slug on every update.
  *
- * @property int    $id
+ * @property int $id
  * @property string $title
  * @property string $slug
  */
