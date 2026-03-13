@@ -3,6 +3,7 @@ name: Tests
 on:
   push:
     branches: [ "main" ]
+    tags: ['v*']
   pull_request:
     branches: [ "main" ]
 
@@ -99,3 +100,17 @@ jobs:
 
       - name: Run PHPStan
         run: vendor/bin/phpstan analyse --no-progress
+
+  publish:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [test, lint, phpstan]
+    name: Publish to Packagist
+
+    steps:
+      - name: Notify Packagist
+        run: |
+          curl -XPOST \
+            -H 'content-type:application/json' \
+            "https://packagist.org/api/update-package?username=${{ secrets.PACKAGIST_USERNAME }}&apiToken=${{ secrets.PACKAGIST_TOKEN }}" \
+            -d '{"repository":{"url":"https://github.com/${{ github.repository }}"}}'
