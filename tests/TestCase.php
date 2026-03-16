@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PhilipRehberger\SlugGenerator\Tests;
 
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
 use PhilipRehberger\SlugGenerator\SlugGeneratorServiceProvider;
@@ -21,7 +22,7 @@ abstract class TestCase extends Orchestra
     /**
      * Register the package service provider.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param Application $app
      * @return array<class-string>
      */
     protected function getPackageProviders($app): array
@@ -34,7 +35,7 @@ abstract class TestCase extends Orchestra
     /**
      * Configure the application for tests.
      *
-     * @param \Illuminate\Foundation\Application $app
+     * @param Application $app
      */
     protected function defineEnvironment($app): void
     {
