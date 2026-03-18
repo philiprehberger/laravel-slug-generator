@@ -4,7 +4,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/philiprehberger/laravel-slug-generator.svg)](https://packagist.org/packages/philiprehberger/laravel-slug-generator)
 [![License](https://img.shields.io/github/license/philiprehberger/laravel-slug-generator)](LICENSE)
 
-Automatic slug generation for Eloquent models with scoped uniqueness, slug history, and transliteration.
+Automatic slug generation for Eloquent models with scoped uniqueness, history, and transliteration.
 
 ## Requirements
 
