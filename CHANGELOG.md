@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-03-22
+
+### Added
+- `slugTemplate()` configuration method for template-based slug generation using `{attribute}` placeholders
+- Template parsing in `SlugService` that resolves placeholders from model attributes before slugification
+
 ## [1.0.3] - 2026-03-23
 
 ### Fixed

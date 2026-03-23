@@ -8,6 +8,7 @@ use PhilipRehberger\SlugGenerator\Tests\Models\MaxLengthPost;
 use PhilipRehberger\SlugGenerator\Tests\Models\MultiSourcePost;
 use PhilipRehberger\SlugGenerator\Tests\Models\Post;
 use PhilipRehberger\SlugGenerator\Tests\Models\ScopedPost;
+use PhilipRehberger\SlugGenerator\Tests\Models\TemplatePost;
 use PhilipRehberger\SlugGenerator\Tests\Models\UpdateablePost;
 use PHPUnit\Framework\Attributes\Test;
 
@@ -194,5 +195,33 @@ class SlugGenerationTest extends TestCase
         $post->save();
 
         $this->assertSame('updated-title', $post->fresh()->slug);
+    }
+
+    // -------------------------------------------------------------------------
+    // Slug template
+    // -------------------------------------------------------------------------
+
+    #[Test]
+    public function it_generates_slug_from_template_with_single_placeholder(): void
+    {
+        $post = TemplatePost::create(['first_name' => 'John', 'last_name' => 'Doe']);
+
+        $this->assertSame('doe-john', $post->slug);
+    }
+
+    #[Test]
+    public function it_generates_slug_from_template_with_multiple_placeholders(): void
+    {
+        $post = TemplatePost::create(['first_name' => 'Jane', 'last_name' => 'Smith']);
+
+        $this->assertSame('smith-jane', $post->slug);
+    }
+
+    #[Test]
+    public function it_handles_template_with_missing_attributes(): void
+    {
+        $post = TemplatePost::create(['first_name' => 'John', 'last_name' => null]);
+
+        $this->assertSame('john', $post->slug);
     }
 }

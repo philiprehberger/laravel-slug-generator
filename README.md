@@ -99,6 +99,27 @@ class Post extends Model
 }
 ```
 
+### Slug Template
+
+Use a template pattern to control how attributes are combined in the slug:
+
+```php
+class Author extends Model
+{
+    use HasSlug;
+
+    public function slugTemplate(): ?string
+    {
+        return '{last_name}-{first_name}';
+    }
+}
+
+$author = Author::create(['first_name' => 'John', 'last_name' => 'Doe']);
+echo $author->slug; // 'doe-john'
+```
+
+Placeholders use the `{attribute}` syntax and are resolved from model attributes before slugification. Missing or null attributes are omitted from the result.
+
 ### Slug History and Redirects
 
 ```php
@@ -143,6 +164,7 @@ public function show(string $slug): Response
 | `slugMaxLength()` | `?int` | `null` | Max length; truncates at word boundary |
 | `slugShouldBeUnique()` | `bool` | `true` | Enforce unique slugs |
 | `slugUniqueScope()` | `?string` | `null` | Column to scope uniqueness checks |
+| `slugTemplate()` | `?string` | `null` | Template pattern with `{attribute}` placeholders |
 | `slugOnUpdate()` | `bool` | `false` | Regenerate slug on model update |
 
 ### HasSlugHistory Trait

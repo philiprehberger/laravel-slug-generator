@@ -187,6 +187,21 @@ trait HasSlug
     }
 
     /**
+     * A template pattern for building the slug source string.
+     *
+     * Placeholders like `{title}` or `{first_name}` are resolved from model
+     * attributes before slugification. When null, the standard `slugSource()`
+     * behaviour is used instead.
+     *
+     * @example '{last_name}-{first_name}'
+     * @example '{title}-{id}'
+     */
+    public function slugTemplate(): ?string
+    {
+        return null;
+    }
+
+    /**
      * Whether the slug should be regenerated when the model is updated.
      *
      * When false (default), the slug is generated once at creation and is

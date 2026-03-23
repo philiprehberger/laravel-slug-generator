@@ -47,10 +47,20 @@ class SlugService
     /**
      * Resolve the source string from one or more model attributes.
      *
-     * When multiple fields are given they are concatenated with a space.
+     * When a slug template is defined, placeholders like `{attribute}` are
+     * resolved from the model first. Otherwise, multiple fields are
+     * concatenated with a space.
      */
     protected function resolveSource(Model $model): string
     {
+        $template = method_exists($model, 'slugTemplate')
+            ? $model->slugTemplate()
+            : null;
+
+        if ($template !== null) {
+            return $this->resolveTemplate($template, $model);
+        }
+
         $fields = method_exists($model, 'slugSource')
             ? $model->slugSource()
             : 'title';
@@ -65,6 +75,19 @@ class SlugService
         }
 
         return (string) ($model->getAttribute($fields) ?? '');
+    }
+
+    /**
+     * Resolve a template string by replacing `{attribute}` placeholders with
+     * the corresponding model attribute values.
+     *
+     * Missing or null attributes are replaced with an empty string.
+     */
+    protected function resolveTemplate(string $template, Model $model): string
+    {
+        return (string) preg_replace_callback('/\{(\w+)\}/', function (array $matches) use ($model): string {
+            return (string) ($model->getAttribute($matches[1]) ?? '');
+        }, $template);
     }
 
     /**
